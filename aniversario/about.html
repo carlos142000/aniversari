@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Nuestra historia ❤️</title>
+
+    <style>
+
+        /* =========================================
+           CONFIGURACIÓN GENERAL
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #fff7f9;
+            color: #4b2632;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================
+           CORAZONES FLOTANTES
+        ========================================= */
+
+        .corazon-flotante {
+            position: fixed;
+            bottom: -50px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: subirCorazon linear forwards;
+        }
+
+        @keyframes subirCorazon {
+
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.9;
+            }
+
+            100% {
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================
+           PORTADA
+        ========================================= */
+
+        .portada {
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    rgba(50, 10, 25, 0.58),
+                    rgba(50, 10, 25, 0.70)
+                ),
+                url("fotos/fotos/foto1.jpeg");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+        }
+
+        .portada-contenido {
+
+            width: 90%;
+            max-width: 850px;
+
+            animation: aparecer 2s ease;
+        }
+
+        .pequeno {
+            font-size: 20px;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+
+        .portada h1 {
+
+            font-size: clamp(45px, 9vw, 90px);
+
+            font-weight: normal;
+
+            margin-bottom: 20px;
+
+            text-shadow:
+                0 5px 20px rgba(0,0,0,0.5);
+        }
+
+        .portada h2 {
+
+            font-size: clamp(25px, 5vw, 45px);
+
+            font-weight: normal;
+
+            margin-bottom: 25px;
+        }
+
+        .portada p {
+
+            font-size: 20px;
+
+            line-height: 1.8;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* =========================================
+           BOTONES
+        ========================================= */
+
+        .boton {
+
+            display: inline-block;
+
+            padding: 16px 32px;
+
+            background: white;
+
+            color: #a82f53;
+
+            border-radius: 40px;
+
+            text-decoration: none;
+
+            border: none;
+
+            font-size: 17px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .boton:hover {
+
+            transform: scale(1.08);
+        }
+
+
+        /* =========================================
+           SECCIONES
+        ========================================= */
+
+        section {
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 90px 20px;
+        }
+
+        .titulo {
+
+            text-align: center;
+
+            font-size: clamp(32px, 6vw, 50px);
+
+            font-weight: normal;
+
+            color: #a82f53;
+
+            margin-bottom: 20px;
+        }
+
+        .subtitulo {
+
+            text-align: center;
+
+            max-width: 750px;
+
+            margin: 0 auto 50px;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            color: #68434e;
+        }
+
+
+        /* =========================================
+           CONTADOR
+        ========================================= */
+
+        .contador {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            max-width: 850px;
+
+            margin: auto;
+        }
+
+        .contador-caja {
+
+            background: white;
+
+            padding: 30px 15px;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 30px rgba(100,30,50,0.10);
+        }
+
+        .numero {
+
+            font-size: 42px;
+
+            color: #b5325b;
+
+            font-weight: bold;
+        }
+
+        .texto-contador {
+
+            margin-top: 8px;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================================
+           GALERÍA
+        ========================================= */
+
+        .galeria {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+        }
+
+        .foto {
+
+            width: 100%;
+
+            height: 400px;
+
+            object-fit: cover;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 10px 30px rgba(80,20,40,0.18);
+
+            transition: 0.5s;
+
+            cursor: pointer;
+        }
+
+        .foto:hover {
+
+            transform:
+                scale(1.03)
+                rotate(1deg);
+        }
+
+
+        /* =========================================
+           MENSAJES
+        ========================================= */
+
+        .mensajes {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .mensaje {
+
+            background: white;
+
+            padding: 35px 25px;
+
+            border-radius: 22px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 30px rgba(100,30,50,0.10);
+
+            transition: 0.4s;
+        }
+
+        .mensaje:hover {
+
+            transform:
+                translateY(-8px);
+        }
+
+        .mensaje-icono {
+
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+        .mensaje p {
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           CANCIÓN
+        ========================================= */
+
+        .seccion-musica {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #9f3153,
+                    #c24d70
+                );
+
+            color: white;
+
+            padding: 60px 25px;
+
+            border-radius: 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 40px rgba(120,30,60,0.25);
+        }
+
+        .seccion-musica h2 {
+
+            font-size: 40px;
+
+            font-weight: normal;
+
+            margin-bottom: 20px;
+        }
+
+        .seccion-musica p {
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+        .boton-musica {
+
+            background: white;
+
+            color: #a82f53;
+
+            border: none;
+
+            padding: 16px 30px;
+
+            border-radius: 35px;
+
+            font-size: 17px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .boton-musica:hover {
+
+            transform: scale(1.07);
+        }
+
+
+        /* =========================================
+           CARTA
+        ========================================= */
+
+        .carta {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            background: white;
+
+            padding: 55px;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 45px rgba(100,30,50,0.12);
+
+            font-size: 18px;
+
+            line-height: 2;
+        }
+
+        .carta p {
+
+            margin-bottom: 22px;
+        }
+
+        .saludo {
+
+            font-size: 28px;
+
+            color: #a82f53;
+
+            margin-bottom: 30px;
+        }
+
+        .firma {
+
+            text-align: center;
+
+            color: #a82f53;
+
+            font-size: 28px;
+
+            margin-top: 40px;
+        }
+
+
+        /* =========================================
+           SECCIÓN FINAL
+        ========================================= */
+
+        .final {
+
+            max-width: none;
+
+            min-height: 90vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(50,10,25,0.65),
+                    rgba(50,10,25,0.75)
+                ),
+                url("fotos/fotos/foto2.jpeg");
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+        .final-contenido {
+
+            max-width: 850px;
+
+            padding: 20px;
+        }
+
+        .final h2 {
+
+            font-size:
+                clamp(42px, 8vw, 75px);
+
+            font-weight: normal;
+
+            margin-bottom: 30px;
+        }
+
+        .final p {
+
+            font-size: 21px;
+
+            line-height: 1.8;
+
+            margin-bottom: 20px;
+        }
+
+        .corazon-grande {
+
+            font-size: 80px;
+
+            margin: 30px;
+
+            animation: latido 1.2s infinite;
+        }
+
+        @keyframes latido {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+
+        /* =========================================
+           BOTÓN MÚSICA FLOTANTE
+        ========================================= */
+
+        .musica-flotante {
+
+            position: fixed;
+
+            right: 20px;
+
+            bottom: 20px;
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: #a82f53;
+
+            color: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            z-index: 10000;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.25);
+        }
+
+
+        /* =========================================
+           ANIMACIÓN
+        ========================================= */
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(30px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =========================================
+           MÓVIL
+        ========================================= */
+
+        @media(max-width: 800px) {
+
+            .contador {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .mensajes {
+
+                grid-template-columns: 1fr;
+            }
+
+            .galeria {
+
+                grid-template-columns: 1fr;
+            }
+
+            .foto {
+
+                height: 380px;
+            }
+
+            .carta {
+
+                padding: 30px 22px;
+
+                font-size: 17px;
+            }
+        }
+
+        @media(max-width: 500px) {
+
+            section {
+
+                padding: 70px 15px;
+            }
+
+            .portada p {
+
+                font-size: 17px;
+            }
+
+            .foto {
+
+                height: 330px;
+            }
+
+            .contador-caja {
+
+                padding: 25px 10px;
+            }
+
+            .numero {
+
+                font-size: 34px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         AUDIO
+
+         IMPORTANTE:
+         Según tu captura tu archivo se llama:
+
+         musica.mp3.mp3
+
+         Por eso lo pongo así.
+    =================================================== -->
+
+    <audio id="musica" loop>
+
+        <source
+            src="musica.mp3.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- ==================================================
+         PORTADA
+    =================================================== -->
+
+    <div class="portada">
+
+        <div class="portada-contenido">
+
+            <div class="pequeno">
+                PARA EL AMOR DE MI VIDA ❤️
+            </div>
+
+            <h1>
+                Hace un año...
+            </h1>
+
+            <h2>
+                comenzó nuestra historia
+            </h2>
+
+            <p>
+
+                Y sin saberlo, aquel día estaba
+                comenzando uno de los capítulos
+                más bonitos de mi vida.
+
+            </p>
+
+            <button
+                class="boton"
+                onclick="comenzarHistoria()">
+
+                Comenzar nuestra historia ❤️
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         CONTADOR
+    =================================================== -->
+
+    <section id="historia">
+
+        <h2 class="titulo">
+            Un año contigo ❤️
+        </h2>
+
+        <p class="subtitulo">
+
+            Un año puede parecer solamente una cantidad
+            de tiempo, pero contigo está lleno de
+            momentos que jamás quisiera olvidar.
+
+        </p>
+
+
+        <div class="contador">
+
+            <div class="contador-caja">
+
+                <div
+                    class="numero"
+                    id="dias">
+
+                    365
+
+                </div>
+
+                <div class="texto-contador">
+                    Días
+                </div>
+
+            </div>
+
+
+            <div class="contador-caja">
+
+                <div
+                    class="numero"
+                    id="horas">
+
+                    00
+
+                </div>
+
+                <div class="texto-contador">
+                    Horas
+                </div>
+
+            </div>
+
+
+            <div class="contador-caja">
+
+                <div
+                    class="numero"
+                    id="minutos">
+
+                    00
+
+                </div>
+
+                <div class="texto-contador">
+                    Minutos
+                </div>
+
+            </div>
+
+
+            <div class="contador-caja">
+
+                <div
+                    class="numero"
+                    id="segundos">
+
+                    00
+
+                </div>
+
+                <div class="texto-contador">
+                    Segundos
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         FOTOS
+    =================================================== -->
+
+    <section>
+
+        <h2 class="titulo">
+            Nuestros recuerdos 📸
+        </h2>
+
+        <p class="subtitulo">
+
+            Algunas fotografías de tantos momentos
+            que hacen que nuestra historia sea
+            solamente nuestra.
+
+        </p>
+
+
+        <div class="galeria">
+
+
+            <img
+                src="fotos/fotos/foto1.jpeg"
+                class="foto"
+                alt="Nuestro recuerdo">
+
+
+            <img
+                src="fotos/fotos/foto2.jpeg"
+                class="foto"
+                alt="Nuestro recuerdo">
+
+
+            <img
+                src="fotos/fotos/foto3.jpeg"
+                class="foto"
+                alt="Nuestro recuerdo">
+
+
+            <img
+                src="fotos/fotos/foto4.jpeg"
+                class="foto"
+                alt="Nuestro recuerdo">
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         MENSAJES
+    =================================================== -->
+
+    <section>
+
+        <h2 class="titulo">
+            Cosas que quiero decirte 💌
+        </h2>
+
+        <p class="subtitulo">
+
+            Porque algunas cosas merecen ser dichas,
+            aunque probablemente nunca sean suficientes
+            para explicar todo lo que siento.
+
+        </p>
+
+
+        <div class="mensajes">
+
+
+            <div class="mensaje">
+
+                <div class="mensaje-icono">
+                    ❤️
+                </div>
+
+                <p>
+
+                    Gracias por llegar a mi vida
+                    y convertir tantos días normales
+                    en momentos especiales.
+
+                </p>
+
+            </div>
+
+
+            <div class="mensaje">
+
+                <div class="mensaje-icono">
+                    🥰
+                </div>
+
+                <p>
+
+                    Gracias por cada sonrisa,
+                    cada abrazo y cada conversación
+                    que hemos compartido.
+
+                </p>
+
+            </div>
+
+
+            <div class="mensaje">
+
+                <div class="mensaje-icono">
+                    ✨
+                </div>
+
+                <p>
+
+                    Me encanta saber que todavía
+                    nos quedan muchísimos recuerdos
+                    por crear juntos.
+
+                </p>
+
+            </div>
+
+
+            <div class="mensaje">
+
+                <div class="mensaje-icono">
+                    🌹
+                </div>
+
+                <p>
+
+                    Me encanta tu forma de ser,
+                    tus detalles y todas esas pequeñas
+                    cosas que te hacen ser tú.
+
+                </p>
+
+            </div>
+
+
+            <div class="mensaje">
+
+                <div class="mensaje-icono">
+                    💖
+                </div>
+
+                <p>
+
+                    Si pudiera volver al comienzo
+                    de nuestra historia, volvería
+                    a elegirte.
+
+                </p>
+
+            </div>
+
+
+            <div class="mensaje">
+
+                <div class="mensaje-icono">
+                    ♾️
+                </div>
+
+                <p>
+
+                    Este fue nuestro primer año,
+                    pero espero que solamente sea
+                    el primero de muchísimos más.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         CANCIÓN
+    =================================================== -->
+
+    <section>
+
+        <div class="seccion-musica">
+
+            <h2>
+                Nuestra canción 🎵
+            </h2>
+
+            <p>
+
+                Porque hay canciones que simplemente
+                escuchamos...
+
+                y hay canciones que terminan formando
+                parte de nuestros recuerdos.
+
+            </p>
+
+
+            <button
+                class="boton-musica"
+                id="botonMusica"
+                onclick="alternarMusica()">
+
+                ▶ Escuchar nuestra canción
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         CARTA DE AMOR
+    =================================================== -->
+
+    <section>
+
+        <h2 class="titulo">
+            Para ti, mi amor ❤️
+        </h2>
+
+
+        <div class="carta">
+
+
+            <p class="saludo">
+                Mi amor ❤️
+            </p>
+
+
+            <p>
+
+                Hoy cumplimos un año juntos, y mientras
+                pienso en todo lo que hemos vivido,
+                me doy cuenta de que un año puede parecer
+                poco tiempo, pero cuando se comparte con
+                la persona que amas, puede estar lleno de
+                recuerdos que se sienten enormes.
+
+            </p>
+
+
+            <p>
+
+                Hace un año comenzó nuestra historia.
+                Tal vez ninguno de los dos sabía exactamente
+                todo lo que vendría después, todos los momentos
+                que íbamos a compartir, las risas, las
+                conversaciones, los abrazos, las fotografías,
+                los días buenos y también aquellos momentos
+                en los que tuvimos que aprender a entendernos
+                un poquito más.
+
+            </p>
+
+
+            <p>
+
+                Y hoy, después de 365 días, puedo decir
+                que me alegra muchísimo que hayas llegado
+                a mi vida.
+
+            </p>
+
+
+            <p>
+
+                Gracias por cada momento que me has regalado,
+                por cada sonrisa que has provocado en mí,
+                por cada abrazo que me ha hecho sentir que
+                todo está bien y por cada pequeño detalle
+                que quizás para ti parece insignificante,
+                pero que para mí significa muchísimo.
+
+            </p>
+
+
+            <p>
+
+                Gracias por escucharme, por acompañarme,
+                por tener paciencia conmigo y por compartir
+                conmigo una parte tan bonita de tu vida.
+
+            </p>
+
+
+            <p>
+
+                Gracias por dejarme conocer tu forma de ser,
+                tus sueños, tus alegrías, tus miedos y todas
+                esas pequeñas cosas que te hacen ser tú.
+
+            </p>
+
+
+            <p>
+
+                Me encantan nuestros recuerdos, pero lo que
+                más me gusta es pensar que todavía nos quedan
+                muchísimos por crear.
+
+            </p>
+
+
+            <p>
+
+                Quiero seguir conociéndote, seguir descubriendo
+                cosas de ti, seguir riéndome contigo por las
+                cosas más tontas, seguir tomando fotografías
+                que algún día veremos y diremos:
+
+                <em>
+                    "¿Te acuerdas de ese día?"
+                </em>
+
+            </p>
+
+
+            <p>
+
+                Quiero seguir estando contigo en los días
+                increíbles y también en aquellos días en los
+                que las cosas no salgan como esperamos.
+
+            </p>
+
+
+            <p>
+
+                Quiero seguir aprendiendo a quererte de la
+                manera que mereces y demostrarte, no solamente
+                con palabras, sino también con cada pequeño
+                detalle, lo importante que eres para mí.
+
+            </p>
+
+
+            <p>
+
+                No sé exactamente qué nos traerá el futuro,
+                pero sí sé algo: me hace ilusión imaginarlo
+                contigo.
+
+            </p>
+
+
+            <p>
+
+                Este primer año me ha dejado cientos de
+                recuerdos, pero también me ha dejado algo
+                mucho más importante: la certeza de que quiero
+                seguir escribiendo nuestra historia contigo.
+
+            </p>
+
+
+            <p>
+
+                Porque esto que comenzó hace un año no quiero
+                que se quede solamente en un bonito recuerdo.
+                Quiero que sea el primero de muchos capítulos.
+
+            </p>
+
+
+            <p>
+
+                Quiero que algún día podamos mirar atrás
+                y recordar este primer aniversario como el
+                comienzo de todos los años que todavía nos
+                faltan por vivir juntos.
+
+            </p>
+
+
+            <p>
+
+                Y si pudiera volver al día en que comenzó todo,
+                sabiendo todo lo que sé hoy, volvería a elegirte.
+
+            </p>
+
+
+            <p>
+
+                Te elegiría otra vez.
+
+            </p>
+
+
+            <p>
+
+                Y otra vez.
+
+            </p>
+
+
+            <p>
+
+                Y todas las veces que hiciera falta.
+
+            </p>
+
+
+            <p>
+
+                Gracias por este primer año, mi amor.
+                Gracias por formar parte de mi vida y por hacer
+                que tantos días sean mucho más bonitos
+                simplemente por estar en ellos.
+
+            </p>
+
+
+            <p>
+
+                Feliz primer aniversario, mi vida. ❤️
+
+            </p>
+
+
+            <p>
+
+                Espero que este sea solamente el primero
+                de muchísimos años, muchísimas aventuras,
+                muchísimos abrazos, muchísimas fotografías
+                y muchísimos momentos que todavía nos quedan
+                por vivir.
+
+            </p>
+
+
+            <p>
+
+                Te amo.
+
+                Y quiero seguir escribiendo nuestra historia
+                contigo.
+
+            </p>
+
+
+            <p>
+
+                Hoy, mañana y en todos esos días que todavía
+                nos quedan.
+
+            </p>
+
+
+            <div class="firma">
+
+                Con todo mi amor ❤️
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         FINAL
+    =================================================== -->
+
+    <section class="final">
+
+        <div class="final-contenido">
+
+            <h2>
+                Esto apenas comienza...
+            </h2>
+
+
+            <p>
+
+                Gracias por este primer año,
+                por cada recuerdo y por cada momento.
+
+            </p>
+
+
+            <p>
+
+                Ojalá podamos seguir llenando
+                muchas páginas de nuestra historia.
+
+            </p>
+
+
+            <div class="corazon-grande">
+                ❤️
+            </div>
+
+
+            <p>
+
+                Feliz primer aniversario,
+                mi amor.
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         BOTÓN FLOTANTE DE MÚSICA
+    =================================================== -->
+
+    <button
+        class="musica-flotante"
+        id="botonFlotante"
+        onclick="alternarMusica()">
+
+        🎵
+
+    </button>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
+    <script>
+
+
+        /* ==============================================
+           FECHA EN QUE COMENZARON
+
+           CAMBIA ESTA FECHA POR LA REAL.
+
+           EJEMPLO:
+           26 DE SEPTIEMBRE DE 2025
+
+           Año-Mes-Día
+        ============================================== */
+
+        const fechaInicio =
+            new Date("2025-09-26T00:00:00");
+
+
+        /* ==============================================
+           CONTADOR
+        ============================================== */
+
+        function actualizarContador() {
+
+            const ahora = new Date();
+
+            const diferencia =
+                ahora - fechaInicio;
+
+
+            if (diferencia < 0) {
+
+                return;
+
+            }
+
+
+            const segundosTotales =
+                Math.floor(
+                    diferencia / 1000
+                );
+
+
+            const dias =
+                Math.floor(
+                    segundosTotales / 86400
+                );
+
+
+            const horas =
+                Math.floor(
+                    (segundosTotales % 86400)
+                    / 3600
+                );
+
+
+            const minutos =
+                Math.floor(
+                    (segundosTotales % 3600)
+                    / 60
+                );
+
+
+            const segundos =
+                segundosTotales % 60;
+
+
+            document.getElementById("dias")
+                .textContent = dias;
+
+
+            document.getElementById("horas")
+                .textContent =
+                String(horas)
+                .padStart(2, "0");
+
+
+            document.getElementById("minutos")
+                .textContent =
+                String(minutos)
+                .padStart(2, "0");
+
+
+            document.getElementById("segundos")
+                .textContent =
+                String(segundos)
+                .padStart(2, "0");
+
+        }
+
+
+        actualizarContador();
+
+
+        setInterval(
+            actualizarContador,
+            1000
+        );
+
+
+        /* ==============================================
+           MÚSICA
+        ============================================== */
+
+        const musica =
+            document.getElementById("musica");
+
+
+        const botonMusica =
+            document.getElementById("botonMusica");
+
+
+        const botonFlotante =
+            document.getElementById("botonFlotante");
+
+
+        function comenzarHistoria() {
+
+            musica.play()
+                .then(function() {
+
+                    botonMusica.textContent =
+                        "⏸ Pausar nuestra canción";
+
+                    botonFlotante.textContent =
+                        "⏸";
+
+                })
+                .catch(function(error) {
+
+                    console.log(
+                        "Error reproduciendo música:",
+                        error
+                    );
+
+                    alert(
+                        "No se pudo reproducir la canción. " +
+                        "Verifica que el archivo se llame " +
+                        "'musica.mp3.mp3'."
+                    );
+
+                });
+
+
+            document.getElementById("historia")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        function alternarMusica() {
+
+            if (musica.paused) {
+
+                musica.play()
+                    .then(function() {
+
+                        botonMusica.textContent =
+                            "⏸ Pausar nuestra canción";
+
+                        botonFlotante.textContent =
+                            "⏸";
+
+                    })
+                    .catch(function(error) {
+
+                        console.log(
+                            "No se pudo reproducir:",
+                            error
+                        );
+
+                        alert(
+                            "No se pudo reproducir la canción."
+                        );
+
+                    });
+
+            }
+
+            else {
+
+                musica.pause();
+
+                botonMusica.textContent =
+                    "▶ Escuchar nuestra canción";
+
+                botonFlotante.textContent =
+                    "🎵";
+
+            }
+
+        }
+
+
+        /* ==============================================
+           CORAZONES
+        ============================================== */
+
+        function crearCorazon() {
+
+            const corazon =
+                document.createElement("div");
+
+
+            corazon.classList.add(
+                "corazon-flotante"
+            );
+
+
+            const tipos = [
+                "❤️",
+                "💕",
+                "💗",
+                "💖",
+                "💘",
+                "💓"
+            ];
+
+
+            corazon.textContent =
+                tipos[
+                    Math.floor(
+                        Math.random()
+                        * tipos.length
+                    )
+                ];
+
+
+            corazon.style.left =
+                Math.random() * 100 + "vw";
+
+
+            corazon.style.fontSize =
+                (15 +
+                Math.random() * 20) +
+                "px";
+
+
+            corazon.style.animationDuration =
+                (5 +
+                Math.random() * 5) +
+                "s";
+
+
+            document.body.appendChild(
+                corazon
+            );
+
+
+            setTimeout(
+                function() {
+
+                    corazon.remove();
+
+                },
+                10000
+            );
+
+        }
+
+
+        setInterval(
+            crearCorazon,
+            1200
+        );
+
+
+        /* ==============================================
+           EFECTO INICIAL
+        ============================================== */
+
+        window.addEventListener(
+            "load",
+            function() {
+
+                for (
+                    let i = 0;
+                    i < 5;
+                    i++
+                ) {
+
+                    setTimeout(
+                        crearCorazon,
+                        i * 400
+                    );
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
